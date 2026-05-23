@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI 人物设定</title>
+  <desc id="desc">An AI character design sheet with futuristic portrait and interface panels.</desc>
+  <rect width="1200" height="900" fill="#070912"/>
+  <circle cx="430" cy="350" r="270" fill="#00e5ff" opacity=".12"/>
+  <circle cx="780" cy="410" r="300" fill="#8a5cff" opacity=".14"/>
+  <path d="M345 760 C375 585 420 450 600 450 C780 450 825 585 855 760 Z" fill="#151d30"/>
+  <circle cx="600" cy="330" r="118" fill="#dbe3f2"/>
+  <path d="M475 330 C500 180 710 170 735 330 C660 280 555 280 475 330 Z" fill="#111827"/>
+  <rect x="110" y="190" width="250" height="90" rx="18" fill="#ffffff" opacity=".06" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="840" y="210" width="250" height="90" rx="18" fill="#ffffff" opacity=".06" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="120" y="560" width="230" height="110" rx="18" fill="#ffffff" opacity=".06" stroke="#ffffff" stroke-opacity=".12"/>
+  <path d="M160 235 H305 M890 255 H1040 M170 610 H310" stroke="#00e5ff" stroke-width="6" opacity=".6"/>
+  <text x="82" y="790" fill="#ffffff" font-family="Arial, sans-serif" font-size="60" font-weight="700">AI CHARACTER</text>
+  <text x="86" y="840" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Character design · Short film preproduction</text>
+</svg>

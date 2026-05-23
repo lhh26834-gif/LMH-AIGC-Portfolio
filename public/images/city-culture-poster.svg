@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">城市文化视觉</title>
+  <desc id="desc">A city culture poster with skyline and graphic blocks.</desc>
+  <rect width="1200" height="900" fill="#05070d"/>
+  <rect x="0" y="0" width="1200" height="900" fill="#00e5ff" opacity=".04"/>
+  <path d="M100 690 H1100 V820 H100 Z" fill="#111827"/>
+  <path d="M160 690 V430 H250 V690 M300 690 V330 H420 V690 M470 690 V500 H560 V690 M630 690 V280 H760 V690 M820 690 V390 H980 V690" fill="#253451"/>
+  <path d="M140 610 H1010" stroke="#00e5ff" stroke-width="7" opacity=".48"/>
+  <path d="M250 240 H880 L1040 520" fill="none" stroke="#8a5cff" stroke-width="8" opacity=".44"/>
+  <circle cx="850" cy="230" r="140" fill="#8a5cff" opacity=".16"/>
+  <text x="82" y="150" fill="#ffffff" font-family="Arial, sans-serif" font-size="60" font-weight="700">CITY CULTURE</text>
+  <text x="86" y="202" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Urban identity · Culture poster</text>
+</svg>
