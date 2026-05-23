@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">护肤品牌电商 Banner</title>
+  <desc id="desc">A beauty product ecommerce banner with glass material and cool light.</desc>
+  <rect width="1200" height="900" fill="#060912"/>
+  <circle cx="350" cy="250" r="260" fill="#00e5ff" opacity=".13"/>
+  <circle cx="850" cy="560" r="300" fill="#8a5cff" opacity=".16"/>
+  <rect x="500" y="240" width="200" height="430" rx="58" fill="#dcecff" opacity=".86"/>
+  <rect x="535" y="315" width="130" height="170" rx="28" fill="#111827" opacity=".82"/>
+  <rect x="555" y="350" width="90" height="12" rx="6" fill="#00e5ff"/>
+  <rect x="560" y="382" width="80" height="8" rx="4" fill="#9ca3af"/>
+  <ellipse cx="600" cy="705" rx="230" ry="50" fill="#00e5ff" opacity=".18"/>
+  <text x="84" y="154" fill="#ffffff" font-family="Arial, sans-serif" font-size="60" font-weight="700">SKIN TECH</text>
+  <text x="88" y="206" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Beauty banner · E-commerce visual</text>
+</svg>

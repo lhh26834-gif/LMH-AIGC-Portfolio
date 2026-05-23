@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">耳机海报</title>
+  <desc id="desc">A floating headphone poster with neon sound waves.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#05070d"/><stop offset=".45" stop-color="#12172b"/><stop offset="1" stop-color="#090a16"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="600" cy="420" r="300" fill="#00e5ff" opacity=".12"/>
+  <circle cx="600" cy="420" r="210" fill="#8a5cff" opacity=".14"/>
+  <path d="M390 452 C390 290 475 205 600 205 C725 205 810 290 810 452" fill="none" stroke="#d8e1ff" stroke-width="46" stroke-linecap="round"/>
+  <rect x="315" y="430" width="118" height="220" rx="48" fill="#111827" stroke="#00e5ff" stroke-opacity=".55" stroke-width="8"/>
+  <rect x="767" y="430" width="118" height="220" rx="48" fill="#111827" stroke="#8a5cff" stroke-opacity=".65" stroke-width="8"/>
+  <path d="M160 430 C260 365 340 365 440 430 C540 495 660 495 760 430 C860 365 940 365 1040 430" fill="none" stroke="#00e5ff" stroke-width="6" opacity=".55"/>
+  <path d="M190 540 C315 470 405 470 520 540 C650 620 780 620 1010 500" fill="none" stroke="#8a5cff" stroke-width="6" opacity=".48"/>
+  <text x="76" y="760" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">SOUND ENERGY</text>
+  <text x="80" y="812" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Headphone poster · E-commerce banner</text>
+</svg>

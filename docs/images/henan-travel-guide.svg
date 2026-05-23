@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">河南旅游攻略</title>
+  <desc id="desc">A Henan travel guide visual with route nodes and landmark silhouettes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#071322"/><stop offset=".5" stop-color="#151324"/><stop offset="1" stop-color="#05070d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <path d="M300 190 C520 80 780 175 870 365 C1010 660 660 770 470 690 C250 600 130 340 300 190 Z" fill="#132032" stroke="#00e5ff" stroke-opacity=".4" stroke-width="6"/>
+  <path d="M335 545 C435 420 510 455 585 330 C665 200 780 300 835 410" fill="none" stroke="#8a5cff" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#00e5ff">
+    <circle cx="335" cy="545" r="16"/><circle cx="505" cy="430" r="16"/><circle cx="585" cy="330" r="16"/><circle cx="835" cy="410" r="16"/>
+  </g>
+  <path d="M160 710 H1040 V805 H160 Z" fill="#101827" stroke="#ffffff" stroke-opacity=".12"/>
+  <path d="M230 710 V620 H290 V710 M360 710 V575 H430 V710 M520 710 V640 H600 V710 M710 710 V590 H790 V710 M875 710 V620 H945 V710" fill="#253451"/>
+  <text x="78" y="138" fill="#ffffff" font-family="Arial, sans-serif" font-size="62" font-weight="700">HENAN TRAVEL</text>
+  <text x="82" y="190" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Guide map · Landmark route · Social cover</text>
+</svg>

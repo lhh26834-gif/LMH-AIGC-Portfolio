@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">个人风格海报</title>
+  <desc id="desc">A personal futuristic portrait poster with violet and cyan light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="1" y2="0">
+      <stop stop-color="#05070d"/><stop offset=".5" stop-color="#101827"/><stop offset="1" stop-color="#201244"/>
+    </linearGradient>
+    <linearGradient id="suit" x1="0" x2="1">
+      <stop stop-color="#00e5ff"/><stop offset="1" stop-color="#8a5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="590" cy="360" r="310" fill="#8a5cff" opacity=".16"/>
+  <circle cx="680" cy="250" r="260" fill="#00e5ff" opacity=".12"/>
+  <path d="M360 795 C390 590 430 410 600 410 C770 410 810 590 840 795 Z" fill="#141b2d"/>
+  <path d="M455 790 C495 605 520 505 600 505 C680 505 705 605 745 790 Z" fill="url(#suit)" opacity=".55"/>
+  <circle cx="600" cy="300" r="112" fill="#d4d9e8"/>
+  <path d="M470 300 C505 150 690 120 738 276 C680 240 610 238 548 268 C515 282 492 297 470 300 Z" fill="#111827"/>
+  <path d="M355 190 L865 690" stroke="#00e5ff" stroke-width="3" opacity=".4"/>
+  <path d="M880 170 L420 760" stroke="#8a5cff" stroke-width="4" opacity=".35"/>
+  <text x="76" y="780" fill="#ffffff" font-family="Arial, sans-serif" font-size="62" font-weight="700">PERSONAL STYLE</text>
+  <text x="80" y="832" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Concept visual · Character mood · AIGC</text>
+</svg>

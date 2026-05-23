@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">惊悚短片封面</title>
+  <desc id="desc">A suspense short film cover with a dark corridor and a glowing silhouette.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop stop-color="#05070d"/><stop offset=".55" stop-color="#111827"/><stop offset="1" stop-color="#190b25"/>
+    </linearGradient>
+    <radialGradient id="red" cx="50%" cy="35%" r="42%">
+      <stop stop-color="#8a5cff" stop-opacity=".5"/><stop offset="1" stop-color="#8a5cff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="160" y="80" width="880" height="760" rx="36" fill="#0b1020" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle cx="600" cy="330" r="280" fill="url(#red)"/>
+  <path d="M250 820 L455 130 H745 L950 820 Z" fill="#05070d" opacity=".82"/>
+  <path d="M500 750 C515 620 520 520 492 410 C470 320 510 250 600 250 C690 250 730 320 708 410 C680 520 685 620 700 750 Z" fill="#111827"/>
+  <circle cx="600" cy="300" r="76" fill="#1f2937"/>
+  <path d="M545 330 C575 360 625 360 655 330" fill="none" stroke="#00e5ff" stroke-width="10" opacity=".65"/>
+  <text x="94" y="760" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">THRILLER COVER</text>
+  <text x="98" y="814" fill="#9ca3af" font-family="Arial, sans-serif" font-size="28">Short film · Suspense · Poster design</text>
+</svg>
