@@ -28,22 +28,6 @@ export const works = [
     featured: true,
   },
   {
-    id: 'rebirth-storyboard-2',
-    title: '重生漫剧分镜 5-8',
-    category: 'AI短剧分镜',
-    image: '01_AI短剧分镜/重生漫剧分镜5-8.jpg',
-    description: '延续重生题材叙事段落，保持人物、场景和镜头语言统一。',
-    tags: ['提示词控制', '短剧前期', '画面统一'],
-  },
-  {
-    id: 'rebirth-storyboard-3',
-    title: '重生漫剧分镜 9-12',
-    category: 'AI短剧分镜',
-    image: '01_AI短剧分镜/重生漫剧分镜9-12.jpg',
-    description: '收束剧情冲突并强化情绪节点，用于后续视频生成与剪辑包装。',
-    tags: ['叙事节奏', 'AI分镜', '画面连续'],
-  },
-  {
     id: 'pet-vlog-character',
     title: '宠物 Vlog 设定',
     category: '人物设定',
