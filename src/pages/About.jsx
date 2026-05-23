@@ -23,7 +23,7 @@ export default function About() {
       <div className="grid gap-6 lg:grid-cols-[0.88fr_1.12fr]">
         <aside className="relative overflow-hidden rounded-[12px] border border-white/10 bg-white/[0.025] p-5 shadow-[0_22px_70px_rgba(0,0,0,0.42)]">
           <div className="relative overflow-hidden rounded-[10px] border border-white/12 bg-[#080b0f]">
-            <img src={assetUrl('07_个人头像与简介/个人头像.png')} alt="李民昊头像" className="aspect-[4/5] w-full object-cover object-top" />
+            <img src={assetUrl('07_个人头像与简介/个人头像-AIGC.png')} alt="李民昊头像" className="aspect-[4/5] w-full object-cover object-top" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,transparent_30%,rgba(0,0,0,0.18)_72%),linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.78)_100%)]" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">AIGC Creator</p>
