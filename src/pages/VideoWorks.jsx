@@ -5,7 +5,7 @@ import VideoCard from '../components/VideoCard.jsx';
 import { videoWorks } from '../data/projects.js';
 import { assetUrl } from '../utils/asset.js';
 
-const durations = ['02:45', '01:32', '02:10', '02:58'];
+const durations = ['00:15', '02:45', '01:32', '02:10', '02:58'];
 const [featuredVideo, ...otherVideos] = videoWorks;
 
 export default function VideoWorks() {
@@ -19,7 +19,7 @@ export default function VideoWorks() {
 
       {featuredVideo && (
         <article className="tech-card corner-frame mb-10 grid gap-6 overflow-hidden p-4 lg:grid-cols-[1.15fr_0.85fr] lg:p-5">
-          <a href={featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="group relative block aspect-video overflow-hidden rounded-[10px] bg-[#0b0b0f]">
+          <a href={featuredVideo.video ? assetUrl(featuredVideo.video) : featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="group relative block aspect-video overflow-hidden rounded-[10px] bg-[#0b0b0f]">
             <img src={assetUrl(featuredVideo.poster)} alt={featuredVideo.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent" />
             <span className="absolute left-1/2 top-1/2 inline-flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/45 text-white shadow-[0_0_44px_rgba(220,235,255,0.22)] backdrop-blur-md">
@@ -33,7 +33,7 @@ export default function VideoWorks() {
             <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{featuredVideo.title}</h2>
             <p className="mt-5 text-base leading-8 text-zinc-400">{featuredVideo.description}</p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {[featuredVideo.type, 'AIGC', '视觉包装'].map((tag) => (
+              {[featuredVideo.type, 'AIGC', ...(featuredVideo.tags?.includes('非商业练习项目') ? ['非商业练习项目'] : ['视觉包装'])].map((tag) => (
                 <span key={tag} className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">
                   <Tag size={13} />
                   {tag}
@@ -44,8 +44,8 @@ export default function VideoWorks() {
                 {durations[0]}
               </span>
             </div>
-            <a href={featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="primary-button mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold transition">
-              打开主推视频 <ExternalLink size={16} />
+            <a href={featuredVideo.video ? assetUrl(featuredVideo.video) : featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="primary-button mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold transition">
+              {featuredVideo.video ? '播放主推视频' : '打开主推视频'} <ExternalLink size={16} />
             </a>
           </div>
         </article>
