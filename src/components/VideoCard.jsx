@@ -4,9 +4,18 @@ import { assetUrl } from '../utils/asset.js';
 
 export default function VideoCard({ item, duration = '01:20' }) {
   const hasVideo = Boolean(item.video);
+  const previewImage = item.poster || item.image;
   const media = (
     <>
-      <img src={assetUrl(item.poster || item.image)} alt={item.title} className="relative z-10 h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" loading="lazy" />
+      {previewImage ? (
+        <img src={assetUrl(previewImage)} alt={item.title} className="relative z-10 h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" loading="lazy" />
+      ) : hasVideo ? (
+        <video src={assetUrl(item.video)} muted playsInline preload="metadata" className="relative z-10 h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+      ) : (
+        <span className="relative z-10 flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.16),transparent_44%),linear-gradient(135deg,#090b0f,#141821)] text-xs uppercase tracking-[0.28em] text-zinc-500">
+          Video
+        </span>
+      )}
       <span className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/12 to-transparent" />
       <span className="absolute left-1/2 top-1/2 z-30 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/42 text-white shadow-[0_0_36px_rgba(220,235,255,0.18)] backdrop-blur-md">
         <Play size={25} fill="currentColor" />
