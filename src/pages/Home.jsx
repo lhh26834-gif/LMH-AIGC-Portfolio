@@ -24,7 +24,7 @@ export default function Home() {
   ];
   const [activeIndex, setActiveIndex] = useState(0);
   const activeWork = heroWorks[activeIndex] || heroWorks[0];
-  const video = works.find((item) => item.category === '视频作品');
+  const video = works.find((item) => item.id === 'pet-vlog-video') || works.find((item) => item.category === '视频作品');
 
   return (
     <>

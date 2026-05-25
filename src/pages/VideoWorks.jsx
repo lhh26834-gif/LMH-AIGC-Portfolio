@@ -5,8 +5,16 @@ import VideoCard from '../components/VideoCard.jsx';
 import { videoWorks } from '../data/projects.js';
 import { assetUrl } from '../utils/asset.js';
 
-const durations = ['00:15', '02:45', '01:32', '02:10', '02:58'];
-const [featuredVideo, ...otherVideos] = videoWorks;
+const durationById = {
+  'headphone-tvc': '00:15',
+  'pet-vlog-video': '02:45',
+  'thriller-video': '01:32',
+  'resume-video': '02:10',
+  'rebirth-video': '02:58',
+};
+
+const featuredVideo = videoWorks.find((item) => item.id === 'pet-vlog-video') || videoWorks[0];
+const otherVideos = videoWorks.filter((item) => item.id !== featuredVideo?.id);
 
 export default function VideoWorks() {
   return (
@@ -25,7 +33,7 @@ export default function VideoWorks() {
             <span className="absolute left-1/2 top-1/2 inline-flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/45 text-white shadow-[0_0_44px_rgba(220,235,255,0.22)] backdrop-blur-md">
               <Play size={30} fill="currentColor" />
             </span>
-            <span className="absolute bottom-4 right-4 border border-white/15 bg-black/65 px-3 py-1 text-xs text-zinc-200 backdrop-blur">{durations[0]}</span>
+            <span className="absolute bottom-4 right-4 border border-white/15 bg-black/65 px-3 py-1 text-xs text-zinc-200 backdrop-blur">{durationById[featuredVideo.id] || '01:00'}</span>
           </a>
 
           <div className="flex flex-col justify-center p-2 sm:p-4 lg:p-6">
@@ -41,7 +49,7 @@ export default function VideoWorks() {
               ))}
               <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">
                 <Clock size={13} />
-                {durations[0]}
+                {durationById[featuredVideo.id] || '01:00'}
               </span>
             </div>
             <a href={featuredVideo.video ? assetUrl(featuredVideo.video) : featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="primary-button mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold transition">
@@ -58,7 +66,7 @@ export default function VideoWorks() {
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {otherVideos.map((item, index) => (
-          <VideoCard key={item.id} item={item} duration={durations[index + 1] || '01:00'} />
+          <VideoCard key={item.id} item={item} duration={durationById[item.id] || '01:00'} />
         ))}
       </div>
     </section>
