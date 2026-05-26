@@ -1,196 +1,168 @@
-import React from 'react';
-import { ArrowRight, Box, Clapperboard, Download, Image, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Mail, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { works } from '../data/works.js';
 import { assetUrl } from '../utils/asset.js';
 
-const findWork = (...ids) => ids.map((id) => works.find((item) => item.id === id)).find(Boolean);
+const entries = [
+  ['图片作品', '/images', 'AIGC 图像、人物、场景与概念视觉'],
+  ['海报作品', '/posters', '商业海报、产品广告与文旅传播'],
+  ['视频作品', '/videos', 'AI 短片、漫剧、Vlog 与封面包装'],
+  ['联系我', '/contact', '项目合作、岗位机会与作品沟通'],
+];
 
-const mainWork =
-  findWork('graystone-model-poster', 'xicoco-product-visual', 'berrybutter-product-visual') ||
-  works.find((item) => item.category === 'AI海报');
-
-const sideWorks = [
-  {
-    label: '城市 / 文化海报',
-    work: findWork('luxury-china-poster', 'retro-sanya-travel-poster', 'beijing-unfolded'),
-    path: '/posters',
-  },
-  {
-    label: '品牌 / 视觉延展',
-    work: findWork('berrybutter-product-visual', 'xicoco-product-visual', 'muzi-egg-tart-brand'),
-    path: '/posters',
-  },
-  {
-    label: '视频 / 分镜脚本',
-    work: findWork('pet-vlog-storyboard', 'headphone-tvc', 'rebirth-storyboard-1'),
-    path: '/videos',
-  },
-].filter((item) => item.work);
-
-const featuredCards = [
-  {
-    label: '商业海报',
-    path: '/posters',
-    icon: Image,
-    work: findWork('graystone-model-poster', 'sf500-farm-model-poster', 'nike-future-sport-poster'),
-  },
-  {
-    label: '品牌视觉',
-    path: '/posters',
-    icon: Box,
-    work: findWork('berrybutter-product-visual', 'xicoco-product-visual', 'muzi-egg-tart-brand'),
-  },
-  {
-    label: '视频分镜',
-    path: '/videos',
-    icon: Clapperboard,
-    work: findWork('headphone-tvc', 'pet-vlog-storyboard', 'rebirth-storyboard-1'),
-  },
-  {
-    label: '创意图像',
-    path: '/images',
-    icon: Sparkles,
-    work: findWork('beijing-unfolded', 'shanghai-miniature-model', 'dark-throne-cosmic-ruins'),
-  },
-].filter((item) => item.work);
-
-function getWorkImage(work) {
-  return work?.poster || work?.image;
-}
-
-function WorkStageCard({ item, index }) {
-  const image = getWorkImage(item.work);
-
-  return (
-    <Link
-      to={item.path}
-      className="home-side-card group relative grid grid-cols-[1fr_auto] items-center gap-4 rounded-[14px] border border-white/14 bg-white/[0.045] p-2.5 shadow-[0_18px_50px_rgba(0,0,0,0.38)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-white/36 hover:bg-white/[0.07]"
-      style={{ animationDelay: `${index * 120}ms` }}
-    >
-      <span className="relative block aspect-[16/10] overflow-hidden rounded-[10px] bg-[#090a0d]">
-        <img src={assetUrl(image)} alt={item.work.title} className="h-full w-full object-cover opacity-88 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
-        <span className="absolute inset-0 bg-gradient-to-t from-black/58 via-black/5 to-transparent" />
-      </span>
-      <span className="max-w-[5.5rem] text-xs leading-5 text-zinc-300 transition group-hover:text-white">{item.label}</span>
-    </Link>
-  );
-}
-
-function FeaturedCard({ item }) {
-  const Icon = item.icon;
-  const image = getWorkImage(item.work);
-
-  return (
-    <Link
-      to={item.path}
-      className="group relative h-[190px] overflow-hidden rounded-[14px] border border-white/12 bg-[#090a0d] shadow-[0_18px_55px_rgba(0,0,0,0.34)] transition duration-300 hover:-translate-y-1 hover:border-white/32 sm:h-[210px]"
-    >
-      <img src={assetUrl(image)} alt={item.work.title} className="absolute inset-0 h-full w-full object-cover opacity-72 transition duration-500 group-hover:scale-105 group-hover:opacity-88" />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-black/8" />
-      <span className="absolute left-4 top-4 inline-flex items-center gap-2 text-xs font-medium text-zinc-200">
-        <Icon size={15} />
-        {item.label}
-      </span>
-      <span className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/16 bg-black/36 text-white backdrop-blur transition group-hover:border-white/42 group-hover:bg-white group-hover:text-black">
-        <ArrowRight size={15} />
-      </span>
-      <div className="absolute bottom-4 left-4 right-4">
-        <h3 className="line-clamp-1 text-lg font-semibold text-white">{item.work.title}</h3>
-        <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">{item.work.description}</p>
-      </div>
-    </Link>
-  );
+function workRoute(item) {
+  if (item?.category === 'AI海报') return '/posters';
+  if (item?.category === '视频作品') return '/videos';
+  return '/images';
 }
 
 export default function Home() {
+  const heroWorks = [
+    ...works.filter((item) => item.category === 'AI海报').slice(0, 2),
+    ...works.filter((item) => item.category === '图片作品').slice(0, 2),
+  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeWork = heroWorks[activeIndex] || heroWorks[0];
+  const video = works.find((item) => item.id === 'pet-vlog-video') || works.find((item) => item.category === '视频作品');
+
   return (
     <>
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(140,170,255,0.105),transparent_34%),radial-gradient(circle_at_42%_52%,rgba(75,230,255,0.07),transparent_30%),linear-gradient(180deg,#050505_0%,#07080d_48%,#050505_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
+      <section className="relative mx-auto w-full max-w-7xl px-4 pb-12 pt-8 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-8 flex max-w-5xl items-center justify-center gap-5">
+          <span className="hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/25 to-white/5 md:block" />
+          <div className="text-center">
+            <p className="text-3xl font-semibold uppercase tracking-[0.16em] text-white sm:text-4xl">AIGC Portfolio</p>
+            <p className="mt-2 text-xs tracking-[0.52em] text-zinc-400">AI 赋能创意 · 无限想象</p>
+          </div>
+          <span className="hidden h-px flex-1 bg-gradient-to-l from-transparent via-white/25 to-white/5 md:block" />
+        </div>
 
-        <div className="relative mx-auto grid min-h-[720px] w-full max-w-[1500px] gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-center lg:px-10 xl:px-16">
-          <div className="relative z-20">
-            <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.38em] text-zinc-400">
-              <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.85)]" />
-              AIGC Visual Designer
-            </div>
-
-            <h1 className="mt-8 max-w-[680px] text-[clamp(3.25rem,6.6vw,6.35rem)] font-black leading-[1.05] tracking-[-0.04em] text-white">
-              <span className="block">AIGC视觉设计师</span>
-              <span className="mt-2 block">让作品更有说服力</span>
+        <div className="grid min-h-[680px] gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
+          <div className="relative z-10">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.36em] text-zinc-500">01 / Home</p>
+            <h1 className="max-w-3xl text-[clamp(3rem,5vw,5rem)] font-semibold leading-[1.05] text-white">
+              <span className="block whitespace-nowrap">AIGC 创造未来</span>
+              <span className="mt-4 block text-[clamp(1.55rem,2.8vw,2.9rem)] font-normal text-zinc-300">想象无界 · 创意无限</span>
             </h1>
-
-            <p className="mt-7 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
-              聚焦 AI 商业海报、品牌视觉延展、视频分镜与创意图像生成，完成从创意构思、Prompt 设计、生成优化到作品包装展示的完整流程。
+            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400">
+              面向商业展示与个人求职的 AIGC 作品集，覆盖 AI 图像生成、海报设计、人物场景设定、短视频封面与分镜叙事。
             </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link to="/posters" className="primary-button inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold transition">
-                查看商业海报 <ArrowRight size={17} />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link to="/images" className="primary-button inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold transition">
+                探索作品 <ArrowRight size={18} />
               </Link>
-              <Link to="/videos" className="tech-button inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white transition">
-                查看视频分镜 <ArrowRight size={17} />
+              <Link to="/contact" className="tech-button inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white transition">
+                联系我 <Mail size={18} />
               </Link>
-              <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="tech-button inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white transition">
-                下载简历 PDF <Download size={16} />
-              </a>
             </div>
           </div>
 
-          <div className="showcase-stage home-hero-stage relative z-10 min-h-[560px] lg:min-h-[640px]">
-            <div className="absolute left-[6%] top-[5%] h-[92%] w-[88%] rounded-full border border-white/[0.075]" />
-            <div className="absolute left-[14%] top-[14%] h-[72%] w-[72%] rounded-full border border-dashed border-cyan-200/[0.14]" />
-            <div className="absolute left-[2%] top-[26%] h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_20px_rgba(103,232,249,0.85)]" />
-            <div className="absolute right-[7%] top-[34%] h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_20px_rgba(196,181,253,0.75)]" />
-            <div className="absolute bottom-0 left-0 right-0 h-[42%] perspective-grid opacity-70" />
+          <div className="showcase-stage relative min-h-[560px] overflow-hidden rounded-[12px] border border-white/18 bg-[#030609]/70 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
+            {activeWork && (
+              <img
+                key={activeWork.id}
+                src={assetUrl(activeWork.image)}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-[0.18] blur-[1px] transition-opacity duration-500"
+              />
+            )}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(230,240,255,0.18),transparent_38%),linear-gradient(180deg,rgba(3,6,9,0.5),rgba(3,6,9,0.92)_80%)]" />
+            <div className="absolute inset-x-5 top-5 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-zinc-500">
+              <span>AIGC Portal</span>
+              <span>Visual System</span>
+            </div>
+            <div className="absolute inset-0 perspective-grid opacity-55" />
+            <div className="absolute left-1/2 top-[39%] h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 shadow-[0_0_90px_rgba(230,240,255,0.28),inset_0_0_54px_rgba(255,255,255,0.08)]" />
+            <div className="absolute left-1/2 top-[39%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/24" />
+            <div className="absolute left-1/2 top-[39%] h-36 w-36 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-white/12 bg-black/30">
+              {activeWork && <img src={assetUrl(activeWork.image)} alt={activeWork.title} className="h-full w-full object-cover opacity-80" />}
+            </div>
+            <div className="absolute bottom-36 left-1/2 h-28 w-5 -translate-x-1/2 rounded-full bg-gradient-to-b from-zinc-100 via-zinc-300 to-zinc-800 shadow-[0_0_42px_rgba(255,255,255,0.32)]" />
+            <div className="absolute bottom-32 left-1/2 h-3 w-14 -translate-x-1/2 rounded-full bg-white/25 blur-md" />
 
-            {mainWork && (
-              <Link
-                to="/posters"
-                className="group absolute left-0 top-1/2 z-20 w-[58%] max-w-[430px] -translate-y-1/2 overflow-hidden rounded-[20px] border border-white/18 bg-[#090a0d] p-2 shadow-[0_34px_110px_rgba(0,0,0,0.58),0_0_46px_rgba(130,210,230,0.14)] transition duration-500 hover:-translate-y-[52%] hover:border-white/34"
-              >
-                <span className="block overflow-hidden rounded-[15px]">
-                  <img src={assetUrl(getWorkImage(mainWork))} alt={mainWork.title} className="aspect-[4/5] h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-                </span>
-                <span className="absolute inset-2 rounded-[15px] bg-gradient-to-t from-black/58 via-transparent to-transparent" />
-                <span className="absolute left-6 top-6 text-[10px] uppercase tracking-[0.24em] text-zinc-300">LMH AIGC Poster</span>
-                <span className="absolute bottom-6 left-6 right-6">
-                  <span className="block text-xs uppercase tracking-[0.26em] text-cyan-100/70">Main Work</span>
-                  <span className="mt-2 block text-2xl font-semibold text-white">{mainWork.title}</span>
-                </span>
-              </Link>
+            {activeWork && (
+              <div className="absolute left-6 right-6 top-14 z-20 flex items-start justify-between gap-5">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">Selected Work</p>
+                  <h2 className="mt-2 text-2xl font-semibold text-white">{activeWork.title}</h2>
+                  <p className="mt-2 max-w-sm text-sm leading-6 text-zinc-400">{activeWork.description}</p>
+                </div>
+                <Link to={workRoute(activeWork)} className="tech-button hidden shrink-0 items-center gap-2 px-4 py-2 text-xs text-zinc-200 transition sm:inline-flex">
+                  查看作品 <ArrowRight size={14} />
+                </Link>
+              </div>
             )}
 
-            <div className="absolute bottom-[9%] left-[8%] z-10 h-6 w-[44%] rounded-full bg-cyan-200/45 blur-2xl" />
-            <div className="absolute bottom-[12%] left-[7%] z-10 h-px w-[46%] bg-gradient-to-r from-transparent via-cyan-100/70 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 z-20 grid grid-cols-4 gap-3">
+              {heroWorks.map((item, index) => {
+                const isActive = index === activeIndex;
 
-            <div className="absolute right-0 top-1/2 z-30 grid w-[48%] -translate-y-1/2 gap-4 sm:gap-5">
-              {sideWorks.map((item, index) => (
-                <WorkStageCard key={item.label} item={item} index={index} />
-              ))}
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onFocus={() => setActiveIndex(index)}
+                    className={`group relative aspect-[4/3] overflow-hidden rounded-[8px] border bg-white/[0.05] text-left transition duration-300 ${
+                      isActive
+                        ? 'border-white/70 shadow-[0_0_28px_rgba(255,255,255,0.18)]'
+                        : 'border-white/18 opacity-78 hover:border-white/45 hover:opacity-100'
+                    }`}
+                    aria-label={`预览 ${item.title}`}
+                    aria-pressed={isActive}
+                  >
+                    <img src={assetUrl(item.image)} alt="" className="h-full w-full object-cover opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
+                    <span className="absolute bottom-2 left-2 right-2 truncate text-[11px] font-medium text-white opacity-0 transition group-hover:opacity-100 sm:opacity-100">
+                      {item.title}
+                    </span>
+                    {isActive && <span className="absolute inset-x-2 top-2 h-0.5 rounded-full bg-white shadow-[0_0_14px_rgba(255,255,255,0.7)]" />}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1500px] px-4 pb-20 pt-12 sm:px-6 lg:px-10 xl:px-16">
+      <section className="mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-7 flex items-end justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="h-4 w-1 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(103,232,249,0.65)]" />
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">精选作品</h2>
-            <span className="h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_14px_rgba(196,181,253,0.6)]" />
+          <div>
+            <p className="text-xs uppercase tracking-[0.32em] text-zinc-500">Featured Works</p>
+            <h2 className="mt-3 text-3xl font-semibold text-white">精选作品</h2>
           </div>
-          <Link to="/images" className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
-            查看全部作品 <ArrowRight size={16} />
+          <Link to="/images" className="hidden items-center gap-2 text-sm text-zinc-400 transition hover:text-white sm:inline-flex">
+            查看全部 <ArrowRight size={16} />
           </Link>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {featuredCards.map((item) => (
-            <FeaturedCard key={item.label} item={item} />
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
+          <Link to="/videos" className="tech-card work-hover group relative min-h-[320px] overflow-hidden">
+            {video && <img src={assetUrl(video.image)} alt={video.title} className="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105" />}
+            <span className="absolute inset-0 bg-gradient-to-r from-black/82 via-black/35 to-transparent" />
+            <span className="absolute left-8 top-8 inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/35 bg-black/45 backdrop-blur">
+              <Play size={25} fill="currentColor" />
+            </span>
+            <div className="absolute bottom-8 left-8 right-8">
+              <p className="text-xs uppercase tracking-[0.28em] text-zinc-400">Video Highlight</p>
+              <h3 className="mt-3 text-3xl font-semibold text-white">{video?.title}</h3>
+              <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-300">{video?.description}</p>
+            </div>
+          </Link>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+            {entries.map(([title, path, text]) => (
+              <Link key={title} to={path} className="tech-card work-hover flex min-h-32 flex-col justify-between p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-semibold text-white">{title}</h3>
+                  <ArrowRight size={18} />
+                </div>
+                <p className="mt-5 text-sm leading-6 text-zinc-400">{text}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>
