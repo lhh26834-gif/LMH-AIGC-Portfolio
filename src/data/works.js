@@ -412,7 +412,7 @@ export const works = [
     category: '视频作品',
     image: '06_视频作品/头戴耳机TVC/分镜.png',
     poster: '06_视频作品/头戴耳机TVC/分镜.png',
-    video: '06_视频作品/头戴耳机TVC/头戴耳机.mp4',
+    video: '06_视频作品/头戴耳机TVC/头戴式耳机TVC-新版.mp4',
     storyboard: '06_视频作品/头戴耳机TVC/分镜.png',
     productImage: '06_视频作品/头戴耳机TVC/产品.webp',
     description: '基于单张黑色头戴式无线降噪耳机产品图，完成 15 秒概念广告分镜与视频练习。项目以“无线降噪耳机｜沉浸之声｜即刻入场”为核心方向，表现产品的降噪感、沉浸感与高级质感。',
