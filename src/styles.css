@@ -258,6 +258,52 @@ img {
   animation: orbit-pulse 6s ease-in-out infinite;
 }
 
+.home-hero-stage::before {
+  content: '';
+  position: absolute;
+  inset: 8% 2% 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 72%, rgba(103, 232, 249, 0.18), transparent 18%),
+    radial-gradient(circle at 62% 42%, rgba(196, 181, 253, 0.11), transparent 24%);
+  filter: blur(18px);
+  opacity: 0.72;
+}
+
+.home-side-card {
+  animation: slow-float 7s ease-in-out infinite;
+}
+
+.home-side-card:nth-child(2) {
+  animation-duration: 8.5s;
+}
+
+.home-side-card:nth-child(3) {
+  animation-duration: 9.5s;
+}
+
+@media (max-width: 767px) {
+  .home-hero-stage {
+    min-height: 680px;
+  }
+
+  .home-hero-stage > a:first-of-type {
+    left: 50%;
+    top: 34%;
+    width: min(78vw, 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .home-hero-stage > a:first-of-type:hover {
+    transform: translate(-50%, -52%);
+  }
+
+  .home-hero-stage .home-side-card {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+}
+
 .glow-node {
   width: 6px;
   height: 6px;
