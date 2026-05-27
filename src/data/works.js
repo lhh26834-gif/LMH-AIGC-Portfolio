@@ -431,6 +431,18 @@ export const works = [
     featured: true,
   },
   {
+    id: 'perfume-tvc',
+    title: '香水 TVC',
+    category: '视频作品',
+    image: '06_视频作品/香水TVC/香水TVC封面.png',
+    poster: '06_视频作品/香水TVC/香水TVC封面.png',
+    video: '06_视频作品/香水TVC/香水TVC.mp4',
+    description: '香水产品 TVC 视频项目，以粉色花瓣、晶透瓶身和柔光氛围呈现香氛广告的浪漫质感与商业视觉表达。',
+    tags: ['产品广告', 'TVC', '香氛视觉'],
+    externalUrl: '',
+    featured: true,
+  },
+  {
     id: 'thriller-video',
     title: '惊悚短片',
     category: '视频作品',
