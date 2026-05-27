@@ -455,6 +455,16 @@ export const works = [
     featured: true,
   },
   {
+    id: 'public-service-ad',
+    title: '公益广告',
+    category: '视频作品',
+    video: '06_视频作品/公益广告/公益广告.mp4',
+    description: '公益广告视频项目，围绕社会议题、情绪叙事和视觉节奏完成短片表达，适合展示 AI 视频内容策划与成片包装能力。',
+    tags: ['公益广告', 'AI视频', '短片叙事'],
+    externalUrl: '',
+    featured: true,
+  },
+  {
     id: 'thriller-video',
     title: '惊悚短片',
     category: '视频作品',

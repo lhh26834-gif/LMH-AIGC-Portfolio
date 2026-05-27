@@ -28,7 +28,7 @@ export default function VideoCard({ item, duration = '01:20' }) {
     <article className="tech-card work-hover group overflow-hidden">
       {hasVideo ? (
         <div className="relative aspect-video overflow-hidden bg-[#0b0b0f]">
-          <video src={assetUrl(item.video)} poster={posterSrc} controls playsInline preload="metadata" className="h-full w-full object-cover">
+          <video src={assetUrl(item.video)} poster={posterSrc} controls playsInline preload="metadata" className={`h-full w-full ${posterSrc ? 'object-cover' : 'object-contain bg-black'}`}>
             当前浏览器不支持视频播放。
           </video>
           <span className="pointer-events-none absolute bottom-4 right-4 border border-white/15 bg-black/60 px-2.5 py-1 text-xs text-zinc-200 backdrop-blur">{duration}</span>
