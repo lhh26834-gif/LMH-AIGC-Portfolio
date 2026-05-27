@@ -411,7 +411,7 @@ export const works = [
     title: '头戴式无线降噪耳机 TVC',
     category: '视频作品',
     image: '06_视频作品/头戴耳机TVC/分镜.png',
-    poster: '06_视频作品/头戴耳机TVC/分镜.png',
+    poster: '06_视频作品/头戴耳机TVC/头戴式耳机TVC-封面.png',
     video: '06_视频作品/头戴耳机TVC/头戴式耳机TVC-新版.mp4',
     storyboard: '06_视频作品/头戴耳机TVC/分镜.png',
     productImage: '06_视频作品/头戴耳机TVC/产品.webp',
