@@ -443,6 +443,18 @@ export const works = [
     featured: true,
   },
   {
+    id: 'motorcycle-tvc',
+    title: '摩托车 TVC',
+    category: '视频作品',
+    image: '06_视频作品/摩托车TVC/摩托车封面图.png',
+    poster: '06_视频作品/摩托车TVC/摩托车封面图.png',
+    video: '06_视频作品/摩托车TVC/摩托车TVC.mp4',
+    description: '摩托车产品 TVC 视频项目，以海岸公路、夕阳速度感和硬朗机车姿态呈现户外骑行广告的力量感与品牌视觉表达。',
+    tags: ['产品广告', 'TVC', '机车视觉'],
+    externalUrl: '',
+    featured: true,
+  },
+  {
     id: 'thriller-video',
     title: '惊悚短片',
     category: '视频作品',

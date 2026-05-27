@@ -9,6 +9,7 @@ const durationById = {
   'headphone-tvc': '00:15',
   'pet-vlog-video': '02:45',
   'perfume-tvc': 'TVC',
+  'motorcycle-tvc': 'TVC',
   'thriller-video': '01:32',
   'resume-video': '02:10',
   'rebirth-video': '02:58',
