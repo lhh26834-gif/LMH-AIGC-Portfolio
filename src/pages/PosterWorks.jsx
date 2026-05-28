@@ -1,16 +1,16 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import ImageLightbox from '../components/ImageLightbox.jsx';
 import PosterCard from '../components/PosterCard.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
-import { works } from '../data/works.js';
-
-const posterWorks = works.filter((item) => item.category === 'AI海报');
+import { useManagedWorks } from '../utils/adminStore.js';
 
 export default function PosterWorks() {
+  const works = useManagedWorks();
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const posterWorks = useMemo(() => works.filter((item) => item.category === 'AI海报'), [works]);
   const moveLightbox = useCallback((direction) => {
     setLightboxIndex((current) => (current + direction + posterWorks.length) % posterWorks.length);
-  }, []);
+  }, [posterWorks.length]);
 
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">

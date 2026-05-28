@@ -7,6 +7,7 @@ import ImageWorks from './pages/ImageWorks.jsx';
 import PosterWorks from './pages/PosterWorks.jsx';
 import VideoWorks from './pages/VideoWorks.jsx';
 import Contact from './pages/Contact.jsx';
+import Admin from './pages/Admin.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="posters" element={<PosterWorks />} />
           <Route path="videos" element={<VideoWorks />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="admin" element={<Admin />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

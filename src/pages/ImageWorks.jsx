@@ -2,15 +2,16 @@ import React, { useCallback, useMemo, useState } from 'react';
 import ImageLightbox from '../components/ImageLightbox.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import WorkCard from '../components/WorkCard.jsx';
-import { works } from '../data/works.js';
+import { useManagedWorks } from '../utils/adminStore.js';
 
 const filters = ['全部', 'AI短剧分镜', '人物设定', '场景设定', '图片作品', 'AI海报'];
-const imageWorks = works.filter((item) => item.category !== '视频作品');
 
 export default function ImageWorks() {
+  const works = useManagedWorks();
   const [active, setActive] = useState('全部');
   const [lightboxIndex, setLightboxIndex] = useState(-1);
-  const filteredWorks = useMemo(() => (active === '全部' ? imageWorks : imageWorks.filter((item) => item.category === active)), [active]);
+  const imageWorks = useMemo(() => works.filter((item) => item.category !== '视频作品'), [works]);
+  const filteredWorks = useMemo(() => (active === '全部' ? imageWorks : imageWorks.filter((item) => item.category === active)), [active, imageWorks]);
   const moveLightbox = useCallback((direction) => {
     setLightboxIndex((current) => (current + direction + filteredWorks.length) % filteredWorks.length);
   }, [filteredWorks.length]);

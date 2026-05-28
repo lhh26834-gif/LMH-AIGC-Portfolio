@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Clock, ExternalLink, Play, Tag } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader.jsx';
 import VideoCard from '../components/VideoCard.jsx';
-import { videoWorks } from '../data/projects.js';
 import { assetUrl } from '../utils/asset.js';
+import { useManagedWorks } from '../utils/adminStore.js';
 
 const durationById = {
   'headphone-tvc': '00:15',
@@ -16,10 +16,23 @@ const durationById = {
   'rebirth-video': null,
 };
 
-const featuredVideo = videoWorks.find((item) => item.id === 'pet-vlog-video') || videoWorks[0];
-const otherVideos = videoWorks.filter((item) => item.id !== featuredVideo?.id);
-
 export default function VideoWorks() {
+  const works = useManagedWorks();
+  const videoWorks = useMemo(
+    () =>
+      works
+        .filter((item) => item.category === '视频作品')
+        .map((item) => ({
+          ...item,
+          poster: item.poster || item.image,
+          type: item.tags?.[0] || 'AI视频',
+        })),
+    [works],
+  );
+  const featuredVideo = videoWorks.find((item) => item.id === 'pet-vlog-video') || videoWorks[0];
+  const otherVideos = videoWorks.filter((item) => item.id !== featuredVideo?.id);
+  const featuredDuration = Object.prototype.hasOwnProperty.call(durationById, featuredVideo?.id) ? durationById[featuredVideo.id] : '01:00';
+
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       <SectionHeader
@@ -31,12 +44,16 @@ export default function VideoWorks() {
       {featuredVideo && (
         <article className="tech-card corner-frame mb-10 grid gap-6 overflow-hidden p-4 lg:grid-cols-[1.15fr_0.85fr] lg:p-5">
           <a href={featuredVideo.video ? assetUrl(featuredVideo.video) : featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="group relative block aspect-video overflow-hidden rounded-[10px] bg-[#0b0b0f]">
-            <img src={assetUrl(featuredVideo.poster)} alt={featuredVideo.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            {featuredVideo.poster ? (
+              <img src={assetUrl(featuredVideo.poster)} alt={featuredVideo.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            ) : (
+              <div className="grid h-full w-full place-items-center text-sm text-zinc-600">No Cover</div>
+            )}
             <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent" />
             <span className="absolute left-1/2 top-1/2 inline-flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/45 text-white shadow-[0_0_44px_rgba(220,235,255,0.22)] backdrop-blur-md">
               <Play size={30} fill="currentColor" />
             </span>
-            <span className="absolute bottom-4 right-4 border border-white/15 bg-black/65 px-3 py-1 text-xs text-zinc-200 backdrop-blur">{durationById[featuredVideo.id] || '01:00'}</span>
+            {featuredDuration ? <span className="absolute bottom-4 right-4 border border-white/15 bg-black/65 px-3 py-1 text-xs text-zinc-200 backdrop-blur">{featuredDuration}</span> : null}
           </a>
 
           <div className="flex flex-col justify-center p-2 sm:p-4 lg:p-6">
@@ -50,10 +67,12 @@ export default function VideoWorks() {
                   {tag}
                 </span>
               ))}
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">
-                <Clock size={13} />
-                {durationById[featuredVideo.id] || '01:00'}
-              </span>
+              {featuredDuration ? (
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">
+                  <Clock size={13} />
+                  {featuredDuration}
+                </span>
+              ) : null}
             </div>
             <a href={featuredVideo.video ? assetUrl(featuredVideo.video) : featuredVideo.externalUrl} target="_blank" rel="noreferrer" className="primary-button mt-8 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold transition">
               {featuredVideo.video ? '播放主推视频' : '打开主推视频'} <ExternalLink size={16} />
@@ -68,7 +87,7 @@ export default function VideoWorks() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {otherVideos.map((item, index) => (
+        {otherVideos.map((item) => (
           <VideoCard key={item.id} item={item} duration={Object.prototype.hasOwnProperty.call(durationById, item.id) ? durationById[item.id] : '01:00'} />
         ))}
         <div className="video-ambient-panel tech-card corner-frame relative min-h-[430px] overflow-hidden md:col-span-2">

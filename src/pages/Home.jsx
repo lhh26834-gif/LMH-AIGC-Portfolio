@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowRight, Mail, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { works } from '../data/works.js';
 import { assetUrl } from '../utils/asset.js';
+import { useManagedWorks } from '../utils/adminStore.js';
 
 const entries = [
   ['图片作品', '/images', 'AIGC 图像、人物、场景与概念视觉'],
@@ -18,6 +18,7 @@ function workRoute(item) {
 }
 
 export default function Home() {
+  const works = useManagedWorks();
   const heroWorks = [
     ...works.filter((item) => item.category === 'AI海报').slice(0, 2),
     ...works.filter((item) => item.category === '图片作品').slice(0, 2),

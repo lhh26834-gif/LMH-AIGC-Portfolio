@@ -1,13 +1,14 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { works } from '../data/works.js';
 import { assetUrl } from '../utils/asset.js';
+import { useManagedWorks } from '../utils/adminStore.js';
 
 const backLabel = '\u8fd4\u56de\u4f5c\u54c1';
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const works = useManagedWorks();
   const work = works.find((item) => item.id === id) ?? works[0];
 
   return (
@@ -42,7 +43,7 @@ export default function ProjectDetail() {
             <div>
               <h3 className="mb-3 text-sm font-semibold text-white">Tags</h3>
               <div className="flex flex-wrap gap-2">
-                {work.tags.map((tag) => (
+                {(work.tags || []).map((tag) => (
                   <span key={tag} className="rounded-full border border-line bg-white/5 px-3 py-1 text-xs text-gray-300">
                     {tag}
                   </span>
@@ -52,7 +53,7 @@ export default function ProjectDetail() {
             <div>
               <h3 className="mb-3 text-sm font-semibold text-white">Tools</h3>
               <div className="flex flex-wrap gap-2">
-                {work.tools.map((tool) => (
+                {(work.tools || []).map((tool) => (
                   <span
                     key={tool}
                     className="rounded-full border border-violet/35 bg-violet/10 px-3 py-1 text-xs text-gray-200"
