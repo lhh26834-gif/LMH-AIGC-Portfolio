@@ -4,14 +4,36 @@ import SectionHeader from '../components/SectionHeader.jsx';
 import WorkCard from '../components/WorkCard.jsx';
 import { useManagedWorks } from '../utils/adminStore.js';
 
-const filters = ['全部', 'AI短剧分镜', '人物设定', '场景设定', '图片作品', 'AI海报'];
+const filters = ['全部', 'AI短剧分镜', '人物设定', '场景设定', '图片作品', 'UI设计'];
+
+const categoryAliases = {
+  全部: ['全部', '鍏ㄩ儴'],
+  AI短剧分镜: ['AI短剧分镜', 'AI鐭墽鍒嗛暅'],
+  人物设定: ['人物设定', '浜虹墿璁惧畾'],
+  场景设定: ['场景设定', '鍦烘櫙璁惧畾'],
+  图片作品: ['图片作品', '鍥剧墖浣滃搧'],
+  UI设计: ['UI设计', 'UI璁捐'],
+};
+
+const posterCategories = ['AI海报', 'AI娴锋姤'];
+const videoCategories = ['视频作品', '瑙嗛浣滃搧'];
+
+function isCategory(work, category) {
+  return categoryAliases[category]?.includes(work.category);
+}
 
 export default function ImageWorks() {
   const works = useManagedWorks();
   const [active, setActive] = useState('全部');
   const [lightboxIndex, setLightboxIndex] = useState(-1);
-  const imageWorks = useMemo(() => works.filter((item) => item.category !== '视频作品'), [works]);
-  const filteredWorks = useMemo(() => (active === '全部' ? imageWorks : imageWorks.filter((item) => item.category === active)), [active, imageWorks]);
+  const imageWorks = useMemo(
+    () => works.filter((item) => !posterCategories.includes(item.category) && !videoCategories.includes(item.category)),
+    [works],
+  );
+  const filteredWorks = useMemo(
+    () => (active === '全部' ? imageWorks : imageWorks.filter((item) => isCategory(item, active))),
+    [active, imageWorks],
+  );
   const moveLightbox = useCallback((direction) => {
     setLightboxIndex((current) => (current + direction + filteredWorks.length) % filteredWorks.length);
   }, [filteredWorks.length]);
@@ -21,7 +43,7 @@ export default function ImageWorks() {
       <SectionHeader
         eyebrow="03 / Image Works"
         title="图片作品"
-        description="以网格画廊展示 AIGC 图像、人物设定、场景设定、短剧分镜和概念视觉。"
+        description="以网格画廊展示 AIGC 图像、人物设定、场景设定、短剧分镜、UI 设计和概念视觉。"
       />
 
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
