@@ -124,6 +124,14 @@ export default function Layout() {
             </div>
           ))}
         </div>
+        <div className="mx-auto flex w-full max-w-7xl justify-end px-4 pb-6 sm:px-6 lg:px-8">
+          <NavLink
+            to="/admin"
+            className="rounded-full border border-white/10 bg-white/[0.025] px-3 py-1.5 text-xs text-zinc-600 transition hover:border-white/25 hover:bg-white/[0.06] hover:text-zinc-300"
+          >
+            后台管理
+          </NavLink>
+        </div>
       </footer>
     </div>
   );

@@ -58,7 +58,8 @@ async function parseResponse(response) {
   const body = text ? JSON.parse(text) : null;
 
   if (!response.ok) {
-    throw new Error(body?.message || body?.error_description || body?.error || 'Supabase request failed');
+    const detail = body?.message || body?.msg || body?.error_description || body?.error || body?.code || response.statusText;
+    throw new Error(detail ? `Supabase ${response.status}: ${detail}` : `Supabase request failed (${response.status})`);
   }
 
   return body;

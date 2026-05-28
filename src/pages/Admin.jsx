@@ -136,11 +136,16 @@ export default function Admin() {
     try {
       const nextSession = await signInWithPassword(email, password);
       setSession(nextSession);
-      const cloudWorks = await refreshManagedWorksFromCloud();
-      setWorks(cloudWorks);
-      setSelectedId(cloudWorks[0]?.id || '');
-      setForm(workToForm(cloudWorks[0] || emptyWork));
-      setStatus('登录成功，已读取云端作品数据');
+
+      try {
+        const cloudWorks = await refreshManagedWorksFromCloud();
+        setWorks(cloudWorks);
+        setSelectedId(cloudWorks[0]?.id || '');
+        setForm(workToForm(cloudWorks[0] || emptyWork));
+        setStatus('登录成功，已读取云端作品数据');
+      } catch (cloudError) {
+        setStatus(`登录成功，但云端作品表暂时无法读取：${cloudError.message}。请确认已经运行 supabase-setup.sql。`);
+      }
     } catch (error) {
       setLoginError(error.message || '登录失败，请检查邮箱和密码');
     } finally {
