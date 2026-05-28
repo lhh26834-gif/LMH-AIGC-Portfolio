@@ -71,6 +71,19 @@ export default function VideoWorks() {
         {otherVideos.map((item, index) => (
           <VideoCard key={item.id} item={item} duration={durationById[item.id] || '01:00'} />
         ))}
+        <div className="video-ambient-panel tech-card corner-frame relative min-h-[430px] overflow-hidden md:col-span-2">
+          <div className="video-ambient-grid absolute inset-0 opacity-60" />
+          <div className="video-ambient-orbit video-ambient-orbit-lg absolute left-1/2 top-1/2" />
+          <div className="video-ambient-orbit video-ambient-orbit-md absolute left-1/2 top-1/2" />
+          <div className="video-ambient-orbit video-ambient-orbit-sm absolute left-1/2 top-1/2" />
+          <span className="video-ambient-node video-ambient-node-a" />
+          <span className="video-ambient-node video-ambient-node-b" />
+          <span className="video-ambient-node video-ambient-node-c" />
+          <span className="video-ambient-beam" />
+          <span className="video-ambient-line video-ambient-line-left" />
+          <span className="video-ambient-line video-ambient-line-right" />
+          <div className="absolute inset-x-10 bottom-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+        </div>
       </div>
     </section>
   );
