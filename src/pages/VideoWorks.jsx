@@ -11,8 +11,8 @@ const durationById = {
   'perfume-tvc': 'TVC',
   'motorcycle-tvc': 'TVC',
   'public-service-ad': 'TVC',
-  'thriller-video': '01:32',
-  'resume-video': '02:10',
+  'thriller-video': null,
+  'resume-video': null,
   'rebirth-video': null,
 };
 
