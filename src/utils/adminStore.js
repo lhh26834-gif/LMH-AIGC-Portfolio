@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { categories as baseCategories, works as baseWorks } from '../data/works.js';
+import { fetchCloudWorks } from './supabaseCloud.js';
 
 export const ADMIN_WORKS_KEY = 'lmh_aigc_admin_works_v1';
 export const ADMIN_EVENT = 'lmh-aigc-works-updated';
@@ -40,6 +41,17 @@ export function saveManagedWorks(nextWorks) {
   window.dispatchEvent(new Event(ADMIN_EVENT));
 }
 
+export async function refreshManagedWorksFromCloud() {
+  const cloudWorks = await fetchCloudWorks();
+
+  if (cloudWorks.length > 0) {
+    saveManagedWorks(cloudWorks);
+    return cloudWorks;
+  }
+
+  return loadManagedWorks();
+}
+
 export function resetManagedWorks() {
   if (typeof window === 'undefined') return;
 
@@ -52,11 +64,21 @@ export function useManagedWorks() {
 
   useEffect(() => {
     const update = () => setManagedWorks(loadManagedWorks());
+    let ignore = false;
+
+    refreshManagedWorksFromCloud()
+      .then((cloudWorks) => {
+        if (!ignore && cloudWorks.length > 0) setManagedWorks(cloudWorks);
+      })
+      .catch(() => {
+        if (!ignore) setManagedWorks(loadManagedWorks());
+      });
 
     window.addEventListener(ADMIN_EVENT, update);
     window.addEventListener('storage', update);
 
     return () => {
+      ignore = true;
       window.removeEventListener(ADMIN_EVENT, update);
       window.removeEventListener('storage', update);
     };
