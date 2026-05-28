@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowUp, Menu, X } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router-dom';
 import TechBackground from './TechBackground.jsx';
 
@@ -16,6 +16,24 @@ const footerItems = ['AI 创意驱动', '视觉叙事', '技术与艺术结合',
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
+  const [showBackTop, setShowBackTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackTop(window.scrollY > 420);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#030609] text-white">
@@ -85,6 +103,17 @@ export default function Layout() {
       <main className="page-shell">
         <Outlet />
       </main>
+
+      <button
+        type="button"
+        aria-label="返回顶部"
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-5 z-50 grid h-11 w-11 place-items-center rounded-[10px] border border-white/15 bg-black/70 text-white shadow-[0_0_28px_rgba(125,211,252,0.16)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-200/55 hover:bg-white hover:text-black hover:shadow-[0_0_34px_rgba(125,211,252,0.28)] sm:bottom-8 sm:right-8 ${
+          showBackTop ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
+        }`}
+      >
+        <ArrowUp size={20} strokeWidth={2.2} />
+      </button>
 
       <footer className="relative border-t border-white/10">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 py-8 text-sm text-zinc-500 sm:px-6 md:grid-cols-4 lg:px-8">
