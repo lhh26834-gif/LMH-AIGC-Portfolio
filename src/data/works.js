@@ -490,7 +490,7 @@ export const works = [
     image: '06_视频作品/重生漫剧-封面.jpg',
     description: '重生题材 AI 漫剧视频，展示连续分镜和短剧视觉风格控制。',
     tags: ['AI漫剧', '连续分镜', '短剧包装'],
-    externalUrl: 'https://www.bilibili.com/video/BV1zpGt65EJP/?spm_id_from=333.1387.homepage.video_card.click&vd_source=1585c69e4da8690f5818314584e39686',
+    externalUrl: 'https://www.bilibili.com/video/BV1YEGQ6NE4d/?spm_id_from=333.1387.homepage.video_card.click&vd_source=1585c69e4da8690f5818314584e39686',
   },
 ];
 

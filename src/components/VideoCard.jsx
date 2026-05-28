@@ -20,7 +20,7 @@ export default function VideoCard({ item, duration = '01:20' }) {
       <span className="absolute left-1/2 top-1/2 z-30 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/42 text-white shadow-[0_0_36px_rgba(220,235,255,0.18)] backdrop-blur-md">
         <Play size={25} fill="currentColor" />
       </span>
-      <span className="absolute bottom-4 right-4 z-30 border border-white/15 bg-black/60 px-2.5 py-1 text-xs text-zinc-200 backdrop-blur">{duration}</span>
+      {duration ? <span className="absolute bottom-4 right-4 z-30 border border-white/15 bg-black/60 px-2.5 py-1 text-xs text-zinc-200 backdrop-blur">{duration}</span> : null}
     </>
   );
 
@@ -31,7 +31,7 @@ export default function VideoCard({ item, duration = '01:20' }) {
           <video src={assetUrl(item.video)} poster={posterSrc} controls playsInline preload="metadata" className={`h-full w-full ${posterSrc ? 'object-cover' : 'object-contain bg-black'}`}>
             当前浏览器不支持视频播放。
           </video>
-          <span className="pointer-events-none absolute bottom-4 right-4 border border-white/15 bg-black/60 px-2.5 py-1 text-xs text-zinc-200 backdrop-blur">{duration}</span>
+          {duration ? <span className="pointer-events-none absolute bottom-4 right-4 border border-white/15 bg-black/60 px-2.5 py-1 text-xs text-zinc-200 backdrop-blur">{duration}</span> : null}
         </div>
       ) : (
         <a href={item.externalUrl} target="_blank" rel="noreferrer" className="relative block aspect-video overflow-hidden bg-[#0b0b0f]">

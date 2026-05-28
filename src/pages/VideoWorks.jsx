@@ -13,7 +13,7 @@ const durationById = {
   'public-service-ad': 'TVC',
   'thriller-video': '01:32',
   'resume-video': '02:10',
-  'rebirth-video': '02:58',
+  'rebirth-video': null,
 };
 
 const featuredVideo = videoWorks.find((item) => item.id === 'pet-vlog-video') || videoWorks[0];
@@ -69,7 +69,7 @@ export default function VideoWorks() {
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {otherVideos.map((item, index) => (
-          <VideoCard key={item.id} item={item} duration={durationById[item.id] || '01:00'} />
+          <VideoCard key={item.id} item={item} duration={Object.prototype.hasOwnProperty.call(durationById, item.id) ? durationById[item.id] : '01:00'} />
         ))}
         <div className="video-ambient-panel tech-card corner-frame relative min-h-[430px] overflow-hidden md:col-span-2">
           <div className="video-ambient-grid absolute inset-0 opacity-60" />
