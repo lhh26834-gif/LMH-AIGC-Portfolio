@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUp, Menu, X } from 'lucide-react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import TechBackground from './TechBackground.jsx';
 
 const navItems = [
@@ -15,6 +15,7 @@ const navItems = [
 const footerItems = ['AI 创意驱动', '视觉叙事', '技术与艺术结合', '持续进化'];
 
 export default function Layout() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [showBackTop, setShowBackTop] = useState(false);
 
@@ -33,6 +34,19 @@ export default function Layout() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
+  const handleAdminAccess = () => {
+    const password = window.prompt('请输入后台入口密码');
+
+    if (password === null) return;
+
+    if (password === 'liminhao6') {
+      navigate('/admin');
+      return;
+    }
+
+    window.alert('密码错误，无法进入后台');
   };
 
   return (
@@ -125,12 +139,13 @@ export default function Layout() {
           ))}
         </div>
         <div className="mx-auto flex w-full max-w-7xl justify-end px-4 pb-6 sm:px-6 lg:px-8">
-          <NavLink
-            to="/admin"
+          <button
+            type="button"
+            onClick={handleAdminAccess}
             className="rounded-full border border-white/10 bg-white/[0.025] px-3 py-1.5 text-xs text-zinc-600 transition hover:border-white/25 hover:bg-white/[0.06] hover:text-zinc-300"
           >
             后台管理
-          </NavLink>
+          </button>
         </div>
       </footer>
     </div>
