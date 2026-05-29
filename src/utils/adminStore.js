@@ -28,7 +28,7 @@ export function loadManagedWorks() {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return baseWorks;
 
-    return parsed.map(normalizeWork);
+    return mergeWithBaseWorks(parsed);
   } catch {
     return baseWorks;
   }

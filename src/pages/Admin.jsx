@@ -87,6 +87,9 @@ export default function Admin() {
         setStatus('已连接 Supabase，并同步云端作品数据');
       })
       .catch((error) => {
+        if (/401|jwt|expired/i.test(error.message || '')) {
+          setSession(null);
+        }
         setStatus(`云端作品暂未同步：${error.message}。如果你还没建表，这是正常的。`);
       });
   }, []);
@@ -144,6 +147,9 @@ export default function Admin() {
         setForm(workToForm(cloudWorks[0] || emptyWork));
         setStatus('登录成功，已读取云端作品数据');
       } catch (cloudError) {
+        if (/401|jwt|expired/i.test(cloudError.message || '')) {
+          setSession(null);
+        }
         setStatus(`登录成功，但云端作品表暂时无法读取：${cloudError.message}。请确认已经运行 supabase-setup.sql。`);
       }
     } catch (error) {

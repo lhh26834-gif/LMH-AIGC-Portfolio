@@ -59,6 +59,9 @@ async function parseResponse(response) {
 
   if (!response.ok) {
     const detail = body?.message || body?.msg || body?.error_description || body?.error || body?.code || response.statusText;
+    if (response.status === 401 && /jwt|expired/i.test(String(detail))) {
+      clearStoredSession();
+    }
     throw new Error(detail ? `Supabase ${response.status}: ${detail}` : `Supabase request failed (${response.status})`);
   }
 
