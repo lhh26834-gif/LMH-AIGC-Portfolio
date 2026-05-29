@@ -90,18 +90,25 @@ export default function VideoWorks() {
         {otherVideos.map((item) => (
           <VideoCard key={item.id} item={item} duration={Object.prototype.hasOwnProperty.call(durationById, item.id) ? durationById[item.id] : '01:00'} />
         ))}
-        <div className="video-ambient-panel tech-card corner-frame relative min-h-[430px] overflow-hidden md:col-span-2">
-          <div className="video-ambient-grid absolute inset-0 opacity-60" />
-          <div className="video-ambient-orbit video-ambient-orbit-lg absolute left-1/2 top-1/2" />
-          <div className="video-ambient-orbit video-ambient-orbit-md absolute left-1/2 top-1/2" />
-          <div className="video-ambient-orbit video-ambient-orbit-sm absolute left-1/2 top-1/2" />
-          <span className="video-ambient-node video-ambient-node-a" />
-          <span className="video-ambient-node video-ambient-node-b" />
-          <span className="video-ambient-node video-ambient-node-c" />
-          <span className="video-ambient-beam" />
-          <span className="video-ambient-line video-ambient-line-left" />
-          <span className="video-ambient-line video-ambient-line-right" />
-          <div className="absolute inset-x-10 bottom-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+        <div className="video-ambient-panel video-ambient-3d tech-card corner-frame relative min-h-[430px] overflow-hidden md:col-span-2">
+          <div className="video-ambient-depth-grid absolute inset-0" />
+          <div className="video-ambient-horizon absolute inset-x-8 bottom-12" />
+          <div className="video-ambient-stage absolute inset-0">
+            <div className="video-ambient-ring video-ambient-ring-lg" />
+            <div className="video-ambient-ring video-ambient-ring-md" />
+            <div className="video-ambient-ring video-ambient-ring-sm" />
+            <div className="video-ambient-core">
+              <span className="video-ambient-crystal video-ambient-crystal-a" />
+              <span className="video-ambient-crystal video-ambient-crystal-b" />
+              <span className="video-ambient-core-light" />
+            </div>
+            <span className="video-ambient-satellite video-ambient-satellite-a" />
+            <span className="video-ambient-satellite video-ambient-satellite-b" />
+            <span className="video-ambient-satellite video-ambient-satellite-c" />
+            <span className="video-ambient-scan video-ambient-scan-left" />
+            <span className="video-ambient-scan video-ambient-scan-right" />
+          </div>
+          <div className="video-ambient-base absolute left-1/2 bottom-14" />
         </div>
       </div>
     </section>
