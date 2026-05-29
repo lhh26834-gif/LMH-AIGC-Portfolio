@@ -267,31 +267,6 @@ img {
   }
 }
 
-@keyframes video-3d-carousel-spin {
-  from {
-    transform: translate3d(-50%, -50%, 115px) rotateX(-8deg) rotateY(0deg);
-  }
-  to {
-    transform: translate3d(-50%, -50%, 115px) rotateX(-8deg) rotateY(360deg);
-  }
-}
-
-@keyframes video-3d-card-glow {
-  0%,
-  100% {
-    box-shadow:
-      0 18px 42px rgba(0, 0, 0, 0.46),
-      0 0 22px rgba(185, 225, 255, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  }
-  50% {
-    box-shadow:
-      0 22px 52px rgba(0, 0, 0, 0.56),
-      0 0 32px rgba(185, 225, 255, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.24);
-  }
-}
-
 @keyframes video-3d-light {
   0%,
   100% {
@@ -565,82 +540,6 @@ img {
   border-radius: 999px;
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.86), transparent);
   box-shadow: 0 0 28px rgba(190, 230, 255, 0.34);
-  animation: video-3d-light 3.8s ease-in-out infinite;
-}
-
-.video-ambient-carousel {
-  position: absolute;
-  left: 50%;
-  top: 49%;
-  width: 1px;
-  height: 1px;
-  transform-style: preserve-3d;
-  animation: video-3d-carousel-spin 24s linear infinite;
-}
-
-.video-ambient-card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(92px, 13vw, 150px);
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: 10px;
-  border: 1px solid rgba(235, 245, 255, 0.2);
-  background: rgba(8, 11, 15, 0.88);
-  transform:
-    translate(-50%, -50%)
-    rotateY(calc(360deg / var(--count) * var(--i)))
-    translateZ(clamp(150px, 25vw, 275px));
-  animation: video-3d-card-glow 4.8s ease-in-out infinite;
-  animation-delay: calc(var(--i) * -0.45s);
-  backface-visibility: hidden;
-}
-
-.video-ambient-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 34%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.58), transparent 48%);
-  pointer-events: none;
-}
-
-.video-ambient-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.88;
-}
-
-.video-ambient-card span {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 8px;
-  z-index: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.86);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.video-ambient-carousel-light {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 3px;
-  height: 190px;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.82), transparent);
-  box-shadow:
-    0 0 26px rgba(190, 230, 255, 0.36),
-    0 0 72px rgba(120, 190, 235, 0.13);
-  transform: translate(-50%, -50%) translateZ(20px);
   animation: video-3d-light 3.8s ease-in-out infinite;
 }
 

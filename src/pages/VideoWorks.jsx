@@ -32,7 +32,6 @@ export default function VideoWorks() {
   const featuredVideo = videoWorks.find((item) => item.id === 'pet-vlog-video') || videoWorks[0];
   const otherVideos = videoWorks.filter((item) => item.id !== featuredVideo?.id);
   const featuredDuration = Object.prototype.hasOwnProperty.call(durationById, featuredVideo?.id) ? durationById[featuredVideo.id] : '01:00';
-  const orbitVideos = (otherVideos.length ? otherVideos : videoWorks).filter((item) => item.poster || item.image).slice(0, 6);
 
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
@@ -98,14 +97,10 @@ export default function VideoWorks() {
             <div className="video-ambient-ring video-ambient-ring-lg" />
             <div className="video-ambient-ring video-ambient-ring-md" />
             <div className="video-ambient-ring video-ambient-ring-sm" />
-            <div className="video-ambient-carousel" style={{ '--count': orbitVideos.length || 1 }}>
-              {orbitVideos.map((item, index) => (
-                <div key={item.id} className="video-ambient-card" style={{ '--i': index }}>
-                  <img src={assetUrl(item.poster || item.image)} alt={item.title} />
-                  <span>{item.title}</span>
-                </div>
-              ))}
-              <span className="video-ambient-carousel-light" />
+            <div className="video-ambient-core">
+              <span className="video-ambient-crystal video-ambient-crystal-a" />
+              <span className="video-ambient-crystal video-ambient-crystal-b" />
+              <span className="video-ambient-core-light" />
             </div>
             <span className="video-ambient-satellite video-ambient-satellite-a" />
             <span className="video-ambient-satellite video-ambient-satellite-b" />
