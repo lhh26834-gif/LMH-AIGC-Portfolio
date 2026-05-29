@@ -5,7 +5,7 @@ export function assetUrl(path) {
   if (/^(https?:)?\/\//.test(path)) return path;
 
   const cleanPath = path.replace(/^\/+/, '');
-  const materialFolders = /^(0[1-7]_|04_AI|05_)/;
+  const materialFolders = /^(0[1-8]_|04_AI|05_)/;
   const encodedPath = cleanPath.split('/').map(encodeURIComponent).join('/');
   const normalizedPath = materialFolders.test(cleanPath)
     ? `${MATERIAL_ROOT}/${encodedPath}`

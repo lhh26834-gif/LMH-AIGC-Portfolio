@@ -41,12 +41,23 @@ export function saveManagedWorks(nextWorks) {
   window.dispatchEvent(new Event(ADMIN_EVENT));
 }
 
+function mergeWithBaseWorks(nextWorks) {
+  const merged = new Map(baseWorks.map((work) => [work.id, normalizeWork(work)]));
+
+  nextWorks.map(normalizeWork).forEach((work) => {
+    merged.set(work.id, work);
+  });
+
+  return Array.from(merged.values());
+}
+
 export async function refreshManagedWorksFromCloud() {
   const cloudWorks = await fetchCloudWorks();
 
   if (cloudWorks.length > 0) {
-    saveManagedWorks(cloudWorks);
-    return cloudWorks;
+    const mergedWorks = mergeWithBaseWorks(cloudWorks);
+    saveManagedWorks(mergedWorks);
+    return mergedWorks;
   }
 
   return loadManagedWorks();

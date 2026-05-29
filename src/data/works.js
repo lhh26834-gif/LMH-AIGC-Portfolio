@@ -1,4 +1,4 @@
-export const categories = ['AI短剧分镜', '人物设定', '场景设定', 'AI海报', '图片作品', '视频作品'];
+export const categories = ['AI短剧分镜', '人物设定', '场景设定', 'AI海报', '图片作品', 'UI设计', '视频作品'];
 
 export const works = [
   {
@@ -404,6 +404,42 @@ export const works = [
     image: '05_图片作品/孤独的剑客.png',
     description: '俯瞰古城灯火与屋脊上的独行剑客，融合武侠叙事、夜景城市和宏大空间感。',
     tags: ['武侠视觉', '古城夜景', '人物叙事'],
+    featured: true,
+  },
+  {
+    id: 'muzi-egg-tart-brand-ui',
+    title: '木子蛋挞图标及周边',
+    category: 'UI设计',
+    image: '08_UI设计/木子蛋挞图标及周边.png',
+    description: '围绕木子蛋挞甜品品牌完成图标、门店视觉、菜单、包装、吉祥物与周边延展设计，展示品牌视觉系统整合能力。',
+    tags: ['品牌视觉', '图标设计', '周边延展'],
+    featured: true,
+  },
+  {
+    id: 'ali-milk-tea-app-ui',
+    title: 'ALI 珍珠奶茶 APP',
+    category: 'UI设计',
+    image: '08_UI设计/ALI奶茶APP.png',
+    description: '以新中式茶饮品牌为方向，设计 APP 图标、启动页、多级页面、点单流程、会员中心和组件规范。',
+    tags: ['APP设计', '茶饮 UI', '界面设计'],
+    featured: true,
+  },
+  {
+    id: 'ali-milk-tea-brand-ui',
+    title: 'ALI 珍珠奶茶图标及周边',
+    category: 'UI设计',
+    image: '08_UI设计/ALI奶茶图标及周边.png',
+    description: '围绕 ALI 珍珠奶茶打造品牌主标识、吉祥物三视图、包装系统、菜单设计、门店门头和周边物料。',
+    tags: ['品牌设计', '图标周边', '视觉延展'],
+    featured: true,
+  },
+  {
+    id: 'muzi-egg-tart-app-ui',
+    title: '木子蛋挞 APP',
+    category: 'UI设计',
+    image: '08_UI设计/木子蛋挞APP.png',
+    description: '木子蛋挞 APP 视觉设计方案，涵盖图标、启动页、首页、商品列表、详情页、购物车、订单和会员中心。',
+    tags: ['APP设计', '甜品品牌', 'UI界面'],
     featured: true,
   },
   {
