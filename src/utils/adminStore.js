@@ -41,11 +41,25 @@ export function saveManagedWorks(nextWorks) {
   window.dispatchEvent(new Event(ADMIN_EVENT));
 }
 
+const sourceAssetOverrideIds = new Set(['public-service-ad']);
+
+function applySourceAssetOverrides(work) {
+  if (!sourceAssetOverrideIds.has(work.id)) return work;
+
+  const baseWork = baseWorks.find((item) => item.id === work.id);
+  if (!baseWork) return work;
+
+  return {
+    ...work,
+    video: baseWork.video,
+  };
+}
+
 function mergeWithBaseWorks(nextWorks) {
   const merged = new Map(baseWorks.map((work) => [work.id, normalizeWork(work)]));
 
   nextWorks.map(normalizeWork).forEach((work) => {
-    merged.set(work.id, work);
+    merged.set(work.id, applySourceAssetOverrides(work));
   });
 
   return Array.from(merged.values());
