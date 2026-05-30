@@ -50,6 +50,30 @@ const projects = [
   },
 ];
 
+const workExperiences = [
+  {
+    company: '北京智绘创意工作室',
+    role: 'AI视觉设计 / AIGC创作者',
+    period: '2025.05 - 2026.03',
+    description:
+      '负责 AI 生图、商业海报设计、视频人物设定、场景设定及视觉创意内容制作。根据项目需求完成风格拆解、Prompt 编写、画面生成、视觉优化与后期整理，参与 AI 短视频、广告视觉、人物形象及场景概念图等内容创作，具备从创意构思到视觉落地的完整执行能力。',
+  },
+  {
+    company: '郑州妙创文化传播有限公司',
+    role: '平面设计师',
+    period: '2023.03 - 2024.04',
+    description:
+      '负责品牌包装、LOGO、图标、吉祥物及品牌周边设计，同时参与电商海报、易拉宝、宣传页等物料设计制作。曾为郑州康辉旅行社设计制作“河南旅游攻略”宣传页，具备品牌视觉、宣传物料和商业设计的实际项目经验。',
+  },
+  {
+    company: '新疆和田国营昆仑种羊场项目',
+    role: '项目安全员',
+    period: '2021.06 - 2022.11',
+    description:
+      '负责项目现场安全管理、隐患排查、安全资料整理及日常安全检查等工作。工作期间积累了较强的执行力、沟通协调能力和项目流程意识，也为后续使用 AI 工具进行文档整理、方案撰写和工作提效打下基础。',
+  },
+];
+
 const basicInfo = [
   { icon: UserRound, label: '姓名', value: '李民昊' },
   { icon: MapPin, label: '所在城市', value: '北京' },
@@ -109,22 +133,33 @@ export default function About() {
           <h2 className="mt-5 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
             AIGC视觉设计师 / AI内容创作者 / AI创意设计方向
           </h2>
-          <div className="mt-7 space-y-5 text-sm leading-8 text-zinc-400 sm:text-base">
-            <p>
-              我是李民昊，2021年毕业于濮阳职业技术学院文秘（信息化应用）专业，求职方向为 AIGC视觉设计师、AI内容创作者、AI创意设计相关岗位。
-            </p>
-            <p>
-              毕业后曾从事平面设计、前端 UI 设计制作等工作，具备一定的视觉审美、页面设计、设计执行与基础前端实现经验；后因家庭因素进入天津援疆项目，在分包单位担任项目安全员，负责安全资料、应急预案、隐患整改通知等文档内容整理。
-            </p>
-            <p>
-              自2022年开始关注 AI 工具，并在实际工作中尝试使用 AI 辅助文案撰写和资料生成，逐渐将 AI 能力与过往设计经验结合。现阶段熟悉 ChatGPT、即梦、可灵、Midjourney、Stable Diffusion、ComfyUI、Photoshop、剪映、Illustrator 等工具，能够围绕项目需求完成创意构思、视觉风格拆解、Prompt 编写、AI 图像生成、视频分镜设计、后期整理与作品展示。
-            </p>
-            <p>
-              个人作品方向涵盖 AI商业海报、产品广告视觉、人物与场景设定、AI短视频分镜、TVC概念广告、UI界面样机及个人作品集网站设计；其中完成过“香水 TVC 广告视觉与视频分镜设计”非商业练习项目，从产品气质出发完成卖点提炼、广告分镜、镜头提示词、字幕音效规划和剪辑节奏整理。
-            </p>
-            <p>
-              相比单纯生成图片，我更关注从需求理解到作品呈现的完整流程，希望将设计审美、AI工具能力、Prompt创作能力与内容策划思维结合，参与 AIGC视觉设计、AI广告创意、短视频内容、产品视觉包装及品牌视觉相关工作。
-            </p>
+          <div className="mt-7 space-y-6 text-sm leading-8 text-zinc-400 sm:text-base">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">Personal Profile</p>
+              <h3 className="mt-2 text-xl font-semibold text-white">个人简介</h3>
+              <p className="mt-3">
+                李民昊，AIGC视觉设计师 / AI内容创作者方向。具备平面设计、品牌视觉、前端 UI 设计及基础页面实现经验。2023年开始学习并尝试使用 AI 辅助工作提效，能够将 AI 工具应用于文案整理、创意发想、视觉生成、人物与场景设定、海报设计及视频内容制作流程。个人作品涵盖 AI商业海报、产品广告视觉、人物与场景设定、AI短视频分镜、TVC概念广告、品牌周边设计、APP/UI界面及个人作品集网站搭建。希望持续深耕 AIGC 视觉内容创作方向，探索 AI 在广告、短剧、品牌设计和数字内容中的更多应用。
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">Work Experience</p>
+              <h3 className="mt-2 text-xl font-semibold text-white">工作经历</h3>
+              <div className="mt-4 grid gap-3">
+                {workExperiences.map((item) => (
+                  <article key={`${item.company}-${item.period}`} className="rounded-[10px] border border-white/10 bg-black/20 p-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h4 className="text-base font-semibold text-white">{item.company}</h4>
+                        <p className="mt-1 text-sm text-zinc-300">{item.role}</p>
+                      </div>
+                      <span className="w-fit rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-xs text-zinc-400">{item.period}</span>
+                    </div>
+                    <p className="mt-3 text-sm leading-7 text-zinc-400">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link to="/posters" className="primary-button inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold transition">
