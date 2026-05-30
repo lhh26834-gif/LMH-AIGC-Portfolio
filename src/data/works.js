@@ -1,3 +1,5 @@
+import publicServiceVideo from './public-service-video.mp4?url';
+
 export const categories = ['AI短剧分镜', '人物设定', '场景设定', 'AI海报', '图片作品', 'UI设计', '视频作品'];
 
 export const works = [
@@ -530,7 +532,7 @@ export const works = [
     id: 'public-service-ad',
     title: '公益广告',
     category: '视频作品',
-    video: '06_视频作品/公益广告/公益广告.mp4',
+    video: publicServiceVideo,
     description: '公益广告视频项目，围绕社会议题、情绪叙事和视觉节奏完成短片表达，适合展示 AI 视频内容策划与成片包装能力。',
     tags: ['公益广告', 'AI视频', '短片叙事'],
     externalUrl: '',
