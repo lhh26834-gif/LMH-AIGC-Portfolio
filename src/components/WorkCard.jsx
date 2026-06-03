@@ -15,9 +15,8 @@ const categoryRoutes = {
 export default function WorkCard({ work, onOpen }) {
   const content = (
     <>
-      <div className="abstract-cover aspect-[4/3] overflow-hidden">
-        <img src={assetUrl(work.image)} alt={work.title} className="relative z-10 h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" loading="lazy" />
-        <span className="absolute inset-0 z-20 bg-gradient-to-t from-black/62 via-transparent to-transparent" />
+      <div className="artwork-cover">
+        <img src={assetUrl(work.image)} alt={work.title} className="relative z-10 block h-auto w-full rounded-[12px] object-contain transition duration-500 group-hover:scale-[1.015]" loading="lazy" />
         <span className="absolute bottom-4 right-4 z-30 translate-y-2 border border-white/15 bg-black/55 px-3 py-1 text-xs text-white opacity-0 backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           查看大图
         </span>

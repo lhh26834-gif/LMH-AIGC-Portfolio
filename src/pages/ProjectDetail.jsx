@@ -19,12 +19,12 @@ export default function ProjectDetail() {
       </Link>
 
       <div className="grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-start">
-        <div className="overflow-hidden rounded-2xl border border-line bg-panel p-3 shadow-card backdrop-blur-xl">
-          <div className="flex min-h-[320px] items-center justify-center rounded-xl bg-black/30 sm:min-h-[460px]">
+        <div className="overflow-hidden rounded-2xl border border-line bg-panel p-2 shadow-card backdrop-blur-xl sm:p-3">
+          <div className="flex items-center justify-center rounded-xl bg-black/30">
             <img
               src={assetUrl(work.image)}
               alt={work.title}
-              className="max-h-[78vh] w-full rounded-xl object-contain"
+              className="h-auto max-h-[82vh] w-auto max-w-full rounded-xl object-contain"
             />
           </div>
         </div>

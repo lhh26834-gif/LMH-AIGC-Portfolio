@@ -5,8 +5,8 @@ import { assetUrl } from '../utils/asset.js';
 export default function PosterCard({ item, onOpen }) {
   return (
     <button type="button" onClick={onOpen} className="tech-card work-hover group block w-full cursor-pointer overflow-hidden text-left">
-      <div className="abstract-cover aspect-[3/4]">
-        <img src={assetUrl(item.image)} alt={item.title} className="relative z-10 h-full w-full object-cover opacity-[0.92] transition duration-500 group-hover:scale-105 group-hover:opacity-100" loading="lazy" />
+      <div className="artwork-cover">
+        <img src={assetUrl(item.image)} alt={item.title} className="relative z-10 block h-auto w-full rounded-[12px] object-contain transition duration-500 group-hover:scale-[1.015]" loading="lazy" />
         <span className="absolute bottom-4 right-4 z-30 translate-y-2 border border-white/15 bg-black/55 px-3 py-1 text-xs text-white opacity-0 backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           查看大图
         </span>
