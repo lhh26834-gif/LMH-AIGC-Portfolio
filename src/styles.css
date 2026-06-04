@@ -701,6 +701,7 @@ img {
 .artwork-cover {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 4 / 5;
   padding: 10px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
@@ -708,7 +709,10 @@ img {
 }
 
 .artwork-cover img {
+  height: 100%;
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.16);
+  object-fit: cover;
   box-shadow:
     0 18px 60px rgba(0, 0, 0, 0.42),
     0 0 26px rgba(180, 205, 230, 0.055);
