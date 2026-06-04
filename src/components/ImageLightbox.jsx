@@ -70,11 +70,11 @@ export default function ImageLightbox({ items, activeIndex, onClose, onMove }) {
       </button>
 
       <div className="flex max-h-[94vh] w-full max-w-[94vw] flex-col items-center justify-center" onClick={(event) => event.stopPropagation()}>
-        <div className="flex max-h-[76vh] w-fit max-w-[92vw] items-center justify-center rounded-[16px] border border-white/18 bg-[#07070a] p-2 shadow-[0_0_90px_rgba(190,210,230,0.2)] sm:p-3">
+        <div className="box-border inline-flex max-h-[78vh] max-w-[92vw] items-center justify-center rounded-[18px] border border-white/22 bg-[#050609] p-4 shadow-[0_0_90px_rgba(190,210,230,0.2)] sm:p-5">
           <img
             src={assetUrl(item.image)}
             alt={item.title}
-            className="max-h-[72vh] max-w-[94vw] rounded-[12px] object-contain sm:max-h-[76vh] sm:max-w-[92vw]"
+            className="block max-h-[calc(78vh-2rem)] max-w-[calc(92vw-2rem)] rounded-[10px] object-contain sm:max-h-[calc(78vh-2.5rem)] sm:max-w-[calc(92vw-2.5rem)]"
           />
         </div>
         <div className="mt-4 w-full max-w-3xl rounded-[14px] border border-white/10 bg-black/42 px-5 py-4 text-center backdrop-blur sm:mt-5">
