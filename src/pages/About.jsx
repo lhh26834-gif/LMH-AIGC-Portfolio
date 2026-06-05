@@ -61,16 +61,9 @@ const workExperiences = [
   {
     company: '郑州妙创文化传播有限公司',
     role: '平面设计师',
-    period: '2023.03 - 2024.04',
+    period: '2021.08 - 2025.4',
     description:
       '负责品牌包装、LOGO、图标、吉祥物及品牌周边设计，同时参与电商海报、易拉宝、宣传页等物料设计制作。曾为郑州康辉旅行社设计制作“河南旅游攻略”宣传页，具备品牌视觉、宣传物料和商业设计的实际项目经验。',
-  },
-  {
-    company: '新疆和田国营昆仑种羊场项目',
-    role: '项目安全员',
-    period: '2021.06 - 2022.11',
-    description:
-      '负责项目现场安全管理、隐患排查、安全资料整理及日常安全检查等工作。工作期间积累了较强的执行力、沟通协调能力和项目流程意识，也为后续使用 AI 工具进行文档整理、方案撰写和工作提效打下基础。',
   },
 ];
 
@@ -145,17 +138,17 @@ export default function About() {
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">Work Experience</p>
               <h3 className="mt-2 text-xl font-semibold text-white">工作经历</h3>
-              <div className="mt-4 grid gap-3">
+              <div className="mt-4 grid gap-4">
                 {workExperiences.map((item) => (
-                  <article key={`${item.company}-${item.period}`} className="rounded-[10px] border border-white/10 bg-black/20 p-4">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <article key={`${item.company}-${item.period}`} className="rounded-[10px] border border-white/10 bg-black/20 p-5">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <h4 className="text-base font-semibold text-white">{item.company}</h4>
-                        <p className="mt-1 text-sm text-zinc-300">{item.role}</p>
+                        <p className="mt-1.5 text-sm text-zinc-300">{item.role}</p>
                       </div>
-                      <span className="w-fit rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-xs text-zinc-400">{item.period}</span>
+                      <span className="w-fit shrink-0 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-400">{item.period}</span>
                     </div>
-                    <p className="mt-3 text-sm leading-7 text-zinc-400">{item.description}</p>
+                    <p className="mt-4 text-sm leading-7 text-zinc-400">{item.description}</p>
                   </article>
                 ))}
               </div>
