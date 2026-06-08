@@ -47,13 +47,15 @@ export default function HomeShowcase({ items }) {
 }
 
 function ShowcaseCard({ item, className }) {
+  const coverSrc = item.coverImage || item.image;
+
   return (
     <Link
       to={item.link}
       className={`tech-card work-hover group relative aspect-[4/3] overflow-hidden rounded-[22px] border-white/16 bg-white/[0.045] shadow-[0_30px_100px_rgba(0,0,0,0.55),0_0_34px_rgba(180,210,240,0.09)] backdrop-blur-xl lg:aspect-auto ${className}`}
     >
       <img
-        src={assetUrl(item.image)}
+        src={assetUrl(coverSrc)}
         alt={item.title}
         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
       />

@@ -13,10 +13,11 @@ const categoryRoutes = {
 };
 
 export default function WorkCard({ work, onOpen }) {
+  const coverSrc = work.coverImage || work.image;
   const content = (
     <>
       <div className="artwork-cover">
-        <img src={assetUrl(work.image)} alt={work.title} className="relative z-10 block h-full w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.015]" loading="lazy" />
+        <img src={assetUrl(coverSrc)} alt={work.title} className="relative z-10 block h-full w-full rounded-[12px] object-cover transition duration-500 group-hover:scale-[1.015]" loading="lazy" />
         <span className="absolute bottom-4 right-4 z-30 translate-y-2 border border-white/15 bg-black/55 px-3 py-1 text-xs text-white opacity-0 backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           查看大图
         </span>

@@ -59,7 +59,8 @@ function mergeWithBaseWorks(nextWorks) {
   const merged = new Map(baseWorks.map((work) => [work.id, normalizeWork(work)]));
 
   nextWorks.map(normalizeWork).forEach((work) => {
-    merged.set(work.id, applySourceAssetOverrides(work));
+    const baseWork = merged.get(work.id);
+    merged.set(work.id, applySourceAssetOverrides(baseWork ? { ...baseWork, ...work } : work));
   });
 
   return Array.from(merged.values());

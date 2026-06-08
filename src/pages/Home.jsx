@@ -17,6 +17,10 @@ function workRoute(item) {
   return '/images';
 }
 
+function workCover(item) {
+  return item?.coverImage || item?.image;
+}
+
 export default function Home() {
   const works = useManagedWorks();
   const heroWorks = [
@@ -63,7 +67,7 @@ export default function Home() {
             {activeWork && (
               <img
                 key={activeWork.id}
-                src={assetUrl(activeWork.image)}
+                src={assetUrl(workCover(activeWork))}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover opacity-[0.18] blur-[1px] transition-opacity duration-500"
               />
@@ -77,7 +81,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-[39%] h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 shadow-[0_0_90px_rgba(230,240,255,0.28),inset_0_0_54px_rgba(255,255,255,0.08)]" />
             <div className="absolute left-1/2 top-[39%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/24" />
             <div className="absolute left-1/2 top-[39%] h-36 w-36 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-white/12 bg-black/30">
-              {activeWork && <img src={assetUrl(activeWork.image)} alt={activeWork.title} className="h-full w-full object-cover opacity-80" />}
+              {activeWork && <img src={assetUrl(workCover(activeWork))} alt={activeWork.title} className="h-full w-full object-cover opacity-80" />}
             </div>
             <div className="absolute bottom-36 left-1/2 h-28 w-5 -translate-x-1/2 rounded-full bg-gradient-to-b from-zinc-100 via-zinc-300 to-zinc-800 shadow-[0_0_42px_rgba(255,255,255,0.32)]" />
             <div className="absolute bottom-32 left-1/2 h-3 w-14 -translate-x-1/2 rounded-full bg-white/25 blur-md" />
@@ -114,7 +118,7 @@ export default function Home() {
                     aria-label={`预览 ${item.title}`}
                     aria-pressed={isActive}
                   >
-                    <img src={assetUrl(item.image)} alt="" className="h-full w-full object-cover opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+                    <img src={assetUrl(workCover(item))} alt="" className="h-full w-full object-cover opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
                     <span className="absolute bottom-2 left-2 right-2 truncate text-[11px] font-medium text-white opacity-0 transition group-hover:opacity-100 sm:opacity-100">
                       {item.title}
@@ -141,7 +145,7 @@ export default function Home() {
 
         <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
           <Link to="/videos" className="tech-card work-hover group relative min-h-[320px] overflow-hidden">
-            {video && <img src={assetUrl(video.image)} alt={video.title} className="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105" />}
+            {video && <img src={assetUrl(workCover(video))} alt={video.title} className="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105" />}
             <span className="absolute inset-0 bg-gradient-to-r from-black/82 via-black/35 to-transparent" />
             <span className="absolute left-8 top-8 inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/35 bg-black/45 backdrop-blur">
               <Play size={25} fill="currentColor" />
