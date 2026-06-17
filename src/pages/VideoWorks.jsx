@@ -16,12 +16,28 @@ const durationById = {
   'rebirth-video': null,
 };
 
+function normalizeVideoWork(item) {
+  if (item.id !== 'resume-video' && item.title !== '巧克力奶TVC') return item;
+
+  return {
+    ...item,
+    title: '巧克力奶TVC',
+    image: '',
+    poster: '',
+    video: '/assets/chocolate-milk-tvc.mp4',
+    externalUrl: '',
+    description: '巧克力瓶装奶TVC小广告',
+    tags: ['巧克力奶TVC', '产品广告', 'TVC'],
+  };
+}
+
 export default function VideoWorks() {
   const works = useManagedWorks();
   const videoWorks = useMemo(
     () =>
       works
         .filter((item) => item.category === '视频作品')
+        .map(normalizeVideoWork)
         .map((item) => ({
           ...item,
           poster: item.poster || item.image,

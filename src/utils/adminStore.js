@@ -41,7 +41,7 @@ export function saveManagedWorks(nextWorks) {
   window.dispatchEvent(new Event(ADMIN_EVENT));
 }
 
-const sourceAssetOverrideIds = new Set(['public-service-ad']);
+const sourceAssetOverrideIds = new Set(['public-service-ad', 'resume-video']);
 
 function applySourceAssetOverrides(work) {
   if (!sourceAssetOverrideIds.has(work.id)) return work;
@@ -49,9 +49,22 @@ function applySourceAssetOverrides(work) {
   const baseWork = baseWorks.find((item) => item.id === work.id);
   if (!baseWork) return work;
 
+  if (work.id === 'public-service-ad') {
+    return {
+      ...work,
+      video: baseWork.video,
+    };
+  }
+
   return {
     ...work,
+    title: baseWork.title,
+    image: baseWork.image,
+    poster: baseWork.poster,
     video: baseWork.video,
+    externalUrl: baseWork.externalUrl,
+    description: baseWork.description,
+    tags: baseWork.tags,
   };
 }
 

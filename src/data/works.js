@@ -741,12 +741,12 @@ export const works = [
   },
   {
     id: 'resume-video',
-    title: '简历视频',
+    title: '巧克力奶TVC',
     category: '视频作品',
-    image: '06_视频作品/简历视频.jpg',
-    description: '用动态内容包装个人能力与作品方向。',
-    tags: ['求职视频', '视觉叙事', '内容包装'],
-    externalUrl: 'https://www.bilibili.com/video/BV1bSLt6qEph/',
+    video: '/assets/chocolate-milk-tvc.mp4',
+    description: '巧克力瓶装奶TVC小广告',
+    tags: ['巧克力奶TVC', '产品广告', 'TVC'],
+    externalUrl: '',
   },
   {
     id: 'rebirth-video',
