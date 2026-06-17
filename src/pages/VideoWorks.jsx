@@ -17,6 +17,19 @@ const durationById = {
 };
 
 function normalizeVideoWork(item) {
+  if (item.id === 'motorcycle-tvc' || item.title === '摩托车 TVC') {
+    return {
+      ...item,
+      title: '国际品牌香水TVC',
+      image: '',
+      poster: '',
+      video: '/assets/international-brand-perfume-tvc.mp4',
+      externalUrl: '',
+      description: '国际品牌香水TVC视频项目，以品牌香氛、产品质感和高级商业视觉呈现香水广告的精致氛围。',
+      tags: ['产品广告', 'TVC', '香氛视觉'],
+    };
+  }
+
   if (item.id !== 'resume-video' && item.title !== '巧克力奶TVC') return item;
 
   return {

@@ -41,7 +41,7 @@ export function saveManagedWorks(nextWorks) {
   window.dispatchEvent(new Event(ADMIN_EVENT));
 }
 
-const sourceAssetOverrideIds = new Set(['public-service-ad', 'resume-video']);
+const sourceAssetOverrideIds = new Set(['public-service-ad', 'resume-video', 'motorcycle-tvc']);
 
 function applySourceAssetOverrides(work) {
   if (!sourceAssetOverrideIds.has(work.id)) return work;
